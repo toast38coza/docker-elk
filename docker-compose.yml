@@ -9,8 +9,11 @@ logstash:
   command: logstash -f /etc/logstash/conf.d/logstash.conf
   volumes:
     - ./logstash/config:/etc/logstash/conf.d
+    - ./logstash/patterns:/opt/logstash/patterns
   ports:
-    - "5000:5000"
+    - "5000:5000" # tcp
+    - "8021:8021" # http
+    - "5044:5044" # beats
   links:
     - elasticsearch
 kibana:
