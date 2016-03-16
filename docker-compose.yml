@@ -4,6 +4,8 @@ elasticsearch:
   ports:
     - "9200:9200"
     - "9300:9300"
+  volumes:
+    - ./elasticsearch/plugins:/usr/share/elasticsearch/plugins
 logstash:
   image: logstash:latest
   command: logstash -f /etc/logstash/conf.d/logstash.conf
